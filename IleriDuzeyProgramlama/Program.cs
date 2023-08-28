@@ -197,3 +197,78 @@
 //    public string Deger { get; set; }
 //}
 #endregion
+
+#region Struct / Deger turunde kisisellestirilmis veri yapisi
+
+// integer bir struct'tir && boolean bir struct'tir
+// struct optimizasyon amacli kullanilirlar. && bellekte daha hizli erisim saglanir (stack) ve nesne tipinde olmadigi icin.
+
+// matematiksel veriler gibi basit degerleri temsil etmek icin kullanilirlar.
+// struct kullanilabilecek iken sinif kullanmak performans kayiplarina sebep olur.
+
+// int a , int b, int c, char z gibi degerleri struct altinda tutup erisimleri struct uzerinden saglayabiliriz.
+
+// structlar icerisindeki operatif tanimlamalari kullanmak icin new keywordunu kullanmak zorundayiz.
+
+//using System.Globalization;
+
+//MyStruct myStruct = new();
+//myStruct.Deneme(myStruct.a);
+
+//MyStruct? myStruct = new();
+//myStruct.Value.Deneme(); // Nullable olarak tanimlarsan value uzerinden erismelisin
+
+//public struct MyStruct
+//{
+//    public int a { get; set; }
+//    public int b { get; set; }
+//    public void Deneme(object value)
+//    {
+//        Console.WriteLine(value.ToString());
+//    }
+//}
+
+#endregion
+
+#region Record / Class turunde degerleri on planda tutan veri yapisi
+
+// c# 9.0'da init-only properties ozelligi gelmistir.
+// degerlerin ilk degeri verilir ve daha sonra degistirilemez. Nesnenin ilk yaratilis aninda deger atamak icin
+
+// init-only kullanimi
+
+//MyClass myClass = new MyClass()
+//{
+//    MyProperty2 = 0,
+//    MyProperty3 = 1,
+//};
+////myClass.MyProperty3 = 2; // hata sadece obje olusturulurken deger atanabilir.
+
+
+//class MyClass
+//{
+//    public int MyProperty { get;} = 3;
+//    public int MyProperty2 { get; set; }
+//    public int MyProperty3 { get; init; }
+//    //public int MyProperty4 {  init; } // get olmak zorunda hata init readonly icin tanimlanir.
+//}
+
+
+
+//records
+
+MyRecord record = new MyRecord()
+{
+    MyProperty = 0
+};
+
+public record MyRecord
+{
+    public int MyProperty { get; set; }
+    public void Deneme()
+    {
+        Console.WriteLine("deneme");
+    }
+}
+
+#endregion
