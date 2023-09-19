@@ -286,6 +286,8 @@
 
 //records
 
+using Microsoft.VisualBasic;
+
 MyRecord record = new MyRecord()
 {
     MyProperty = 0
@@ -302,4 +304,68 @@ public record MyRecord
 
 #endregion
 
+#region Statik Kavrami Ve Kullanimi
 
+// Statik yapilarda veriler instancelar uzerinden degil direk yapinin kendisi uzerinden calisilir.
+// Bellekte Statik alaninda tutulurlar ve uygulamadan bagimsiz calisirlar.
+
+// Uygulama capinda erisilebilir olmaktadirlar.
+
+//Static olan seyler sadece statiklere erisebilir. Statik olmayan seyler statik olan seylere erisemez.
+//Statik olarak tanimlanmis bir sinif icerisinde statik olmayan bir sey barinamaz.
+//Statik olmayan bir sinifta statik olan seyler barinabilir.
+
+//Statik olan seylerde virtual isaretini kullanamaz ve override edemeyiz. / Overload Edebiliriz.
+// statiklerden nesne olusturulamayacagi icin baska bir nesnede kalitim ile override edilmesi akil kari degildir.
+
+//class MyClass
+//{
+//    public int MyProperty { get; set; }
+//    public static int MyInt { get; set; }
+
+
+//    // X overload edilebilir.
+//    public static void X()
+//    {
+
+//    }
+
+//    public static void X(string y)
+//    {
+
+//    }
+//}
+//MyClass myClass = new MyClass();
+//myClass.MyProperty = 0;
+//MyClass.MyInt = 0;
+
+
+// Asagidaki ornekte static bir alanin kalitim ile iki sinif arasinda tasinabildigini gostermektedir.
+//partial class MyClass : MyClass2
+//{
+//    public MyClass()
+//    {
+//        MyProperty = 0;
+//    }
+//}
+
+//public class MyClass2
+//{
+//    public MyClass2()
+//    {
+//    }
+
+//    public static int MyProperty { get; set; }
+//}
+
+
+//Statik memberlara ilk deger atamak icin kullanilabilir. Tek seferlik calisir.
+//class MyClass
+//{
+//    static MyClass()
+//    {
+//        Console.WriteLine("Statik Constructor.");
+//    }
+//}
+
+#endregion
