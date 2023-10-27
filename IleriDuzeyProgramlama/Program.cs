@@ -286,21 +286,21 @@
 
 //records
 
-using Microsoft.VisualBasic;
+//using Microsoft.VisualBasic;
 
-MyRecord record = new MyRecord()
-{
-    MyProperty = 0
-};
+//MyRecord record = new MyRecord()
+//{
+//    MyProperty = 0
+//};
 
-public record MyRecord
-{
-    public int MyProperty { get; set; }
-    public void Deneme()
-    {
-        Console.WriteLine("deneme");
-    }
-}
+//public record MyRecord
+//{
+//    public int MyProperty { get; set; }
+//    public void Deneme()
+//    {
+//        Console.WriteLine("deneme");
+//    }
+//}
 
 #endregion
 
@@ -365,6 +365,135 @@ public record MyRecord
 //    static MyClass()
 //    {
 //        Console.WriteLine("Statik Constructor.");
+//    }
+//}
+
+#endregion
+
+#region Delegete
+//using System.Threading.Channels;
+
+//Console.WriteLine("Deneme");
+
+//Delegate tanimlama
+//XHandler xdelegate = new XHandler(X); // ayni
+//XHandler xdelegate2 = X; // ayni
+//XHandler xdelegate3 = () => // Lambda ile
+//{
+
+//};
+//XHandler xdelegate4 = delegate () // Anonim Method
+//{
+
+//};
+
+//// Coklu Tanimlama : Imzalari ayni oldugu surece birden fazla methodu burada tanimlayabiliriz.
+//xdelegate += () => { };
+//xdelegate += delegate () { };
+//xdelegate += xMethod2;
+//xdelegate += xMethod1;
+
+//// Coklu Tanimlamalarda Methodlar icerisinde dongu kurma
+
+//var methods = xdelegate.GetInvocationList();
+//foreach (var item in methods)
+//{
+//    global::System.Console.WriteLine(item.Method.Name);
+//}
+
+//// Delegate Kullanma
+//xdelegate();
+//xdelegate2.Invoke(); // Senkron
+
+//IAsyncResult result = xdelegate2.BeginInvoke(new AsyncCallback(result => // Asenkron Calistirma
+//{
+//    // Asenkron surec sonlandiginda burasi tetiklenir.
+//}), null);
+//xdelegate2.EndInvoke(result); // Asenkron invoke sonlandirilir.
+//void X()
+//{
+//    global::System.Console.WriteLine("Deneme");
+//}
+//void xMethod1() => Console.WriteLine("1");
+//void xMethod2() => Console.WriteLine("2");
+//public delegate void XHandler();
+
+#endregion
+
+#region Eventler
+
+// ORNEK
+
+using System;
+
+string path = @"C:\Users\kocak\Desktop\Prompt Koleksiyon";
+PathControl PathControl = new();
+PathControl.PathControlEvent += (sizeMB) =>
+{
+    global::System.Console.WriteLine("Boyut 15 mb'ti asti" + " " + sizeMB);
+};
+await PathControl.Control(path);
+
+class PathControl
+{
+    public delegate void PathHandler(float sizeMB);
+    public event PathHandler PathControlEvent;
+    public async Task Control(string path)
+    {
+        while (true)
+        {
+            await Task.Delay(1000);
+            DirectoryInfo directoryInfo = new(path);
+            var files = directoryInfo.GetFiles();
+            float size = await Task.Run(() => directoryInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length));
+            float sizeMB = (size / 1024) / 1024;
+            if (sizeMB > 15)
+            {
+                PathControlEvent(sizeMB);
+            }
+        }
+    }
+}
+
+//using System;
+
+//MyEventPublisher eventPublisher = new();
+
+//// Event Ile method baglama
+//eventPublisher.MyEvent += X;
+//void X()
+//{
+//    global::System.Console.WriteLine("Event Tetiklendi");
+//}
+
+////Event tetikeleme
+//eventPublisher.ExecuteEvent();
+
+//// Event Tanimlama
+//class MyEventPublisher
+//{
+//    public delegate void XHandler();
+//    //public event XHandler MyEvent;
+
+//    XHandler xdelegete;
+//    public event XHandler MyEvent
+//    {
+//        //method eklerken tetiklenir
+//        add
+//        {
+//            xdelegete += value;
+//        }
+//        //method cikarilirken tetiklenir
+//        remove
+//        {
+//            xdelegete -= value;
+//        }
+//    }
+//    public void ExecuteEvent()
+//    {
+//        //event firlatma
+//        //MyEvent();
+//        xdelegete();
 //    }
 //}
 
