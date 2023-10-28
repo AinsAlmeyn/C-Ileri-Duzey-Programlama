@@ -424,36 +424,45 @@
 
 // ORNEK
 
-using System;
+//using System;
 
-string path = @"C:\Users\kocak\Desktop\Prompt Koleksiyon";
-PathControl PathControl = new();
-PathControl.PathControlEvent += (sizeMB) =>
-{
-    global::System.Console.WriteLine("Boyut 15 mb'ti asti" + " " + sizeMB);
-};
-await PathControl.Control(path);
+//string path = @"C:\Users\kocak\Desktop\Prompt Koleksiyon";
+//PathControl PathControl = new();
+//PathControl.PathControlEvent += (sizeMB) =>
+//{
+//    global::System.Console.WriteLine("Boyut 15 mb'ti asti" + " " + sizeMB);
+//};
+//PathControl.PathControlEvent += (sizeMB) =>
+//{
+//    global::System.Console.WriteLine("Boyut 15 mb'ti asti" + " " + sizeMB);
+//};
+//await PathControl.Control(path);
 
-class PathControl
-{
-    public delegate void PathHandler(float sizeMB);
-    public event PathHandler PathControlEvent;
-    public async Task Control(string path)
-    {
-        while (true)
-        {
-            await Task.Delay(1000);
-            DirectoryInfo directoryInfo = new(path);
-            var files = directoryInfo.GetFiles();
-            float size = await Task.Run(() => directoryInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length));
-            float sizeMB = (size / 1024) / 1024;
-            if (sizeMB > 15)
-            {
-                PathControlEvent(sizeMB);
-            }
-        }
-    }
-}
+//class PathControl
+//{
+//    public delegate void PathHandler(float sizeMB);
+//    public event PathHandler PathControlEvent;
+//    public event PathHandler PathLowControl;
+//    public async Task Control(string path)
+//    {
+//        while (true)
+//        {
+//            await Task.Delay(1000);
+//            DirectoryInfo directoryInfo = new(path);
+//            var files = directoryInfo.GetFiles();
+//            float size = await Task.Run(() => directoryInfo.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length));
+//            float sizeMB = (size / 1024) / 1024;
+//            if (sizeMB > 15)
+//            {
+//                PathControlEvent(sizeMB);
+//            }
+//            else
+//            {
+//                PathLowControl(sizeMB);
+//            }
+//        }
+//    }
+//}
 
 //using System;
 
@@ -497,4 +506,69 @@ class PathControl
 //    }
 //}
 
+//EticaretSistemi eticaret = new EticaretSistemi();
+
+
+//// Olaylara metotları bağlama
+//eticaret.SatinAlmaGerceklesti += eticaret.FaturaOlustur;
+//eticaret.SatinAlmaGerceklesti += eticaret.StokGuncelle;
+//eticaret.SatinAlmaGerceklesti += eticaret.EpostaGonder;
+
+//// Ürün satın alma
+//eticaret.UrunSatinAl();
+//public class EticaretSistemi
+//{
+//    // Event tanımı Action ile
+//    public event Action SatinAlmaGerceklesti;
+
+//    public void FaturaOlustur()
+//    {
+//        Console.WriteLine("Fatura oluşturuldu.");
+//    }
+
+//    public void StokGuncelle()
+//    {
+//        Console.WriteLine("Stok güncellendi.");
+//    }
+
+//    public void EpostaGonder()
+//    {
+//        Console.WriteLine("E-posta bildirimi gönderildi.");
+//    }
+
+//    public void UrunSatinAl()
+//    {
+//        // Diğer satın alma işlemleri...
+
+//        OnSatinAlmaGerceklesti(); // Satın alma olayını tetikleme
+//    }
+
+//    protected virtual void OnSatinAlmaGerceklesti()
+//    {
+//        SatinAlmaGerceklesti?.Invoke();
+//    }
+//}
+//Bu örnekte, SatinAlmaGerceklesti adında bir event tanımladık. Satın alma işlemi gerçekleştiğinde bu olay tetiklenir. Program sınıfında bu olaya dinleyici (listener) olarak metotları ekledik. Bu şekilde, satın alma işlemi gerçekleştiğinde otomatik olarak bu metotlar çağırılır.
+
+//Event'ler, sınıf dışından doğrudan tetiklenemez, bu nedenle OnSatinAlmaGerceklesti adında korumalı (protected) bir metot oluşturduk. Bu metot, satın alma işlemi gerçekleştiğinde içeriden olayı tetikler. Bu yaklaşım, event'lerin doğru ve güvenli bir şekilde kullanılmasını sağlar.
+
+
+#endregion
+
+#region Action Delegate'si
+//geriye deger dondurmez.
+//Action action1 = () => Console.WriteLine("Action");
+//Action<bool> action2 = (b) => Console.WriteLine("Action<T>");
+//Action<bool, int, int> action3 = (b, i1, i2) => Console.WriteLine("Action<T>");
+#endregion
+
+#region Func Delegate'si
+//Geriye int dönen metotları temsil eden bir Func delegate'i:
+Func<int> func1 = () => 3;
+
+//Geriye bool dönen ve parametre olarak int, char alan Func delegate'i:
+Func<int, char, bool> func2 = (i, c) => 3 == 3;
+
+//Geriye (int, char)-tuple dönen ve parametre olarak byte, int, string alan Func delegate'i:
+Func<byte, int, string, (int, char)> func3 = (b, i, s) => (3, 'a');
 #endregion
