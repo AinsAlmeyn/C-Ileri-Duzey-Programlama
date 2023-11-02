@@ -564,11 +564,64 @@
 
 #region Func Delegate'si
 //Geriye int dönen metotları temsil eden bir Func delegate'i:
-Func<int> func1 = () => 3;
+//Func<int> func1 = () => 3;
 
 //Geriye bool dönen ve parametre olarak int, char alan Func delegate'i:
-Func<int, char, bool> func2 = (i, c) => 3 == 3;
+//Func<int, char, bool> func2 = (i, c) => 3 == 3;
 
 //Geriye (int, char)-tuple dönen ve parametre olarak byte, int, string alan Func delegate'i:
-Func<byte, int, string, (int, char)> func3 = (b, i, s) => (3, 'a');
+//Func<byte, int, string, (int, char)> func3 = (b, i, s) => (3, 'a');
 #endregion
+
+#region ExpandoObject Dinamik Obje Olusturma
+// Dynamic olarak veri yapilari olusturmakta kullanilir.
+
+//using System.Dynamic;
+
+//dynamic person = new ExpandoObject();
+//person.DynamicProp = "Dynamic prop olusturma";
+//person.Age = 32;
+//person.DynamicMethod = new Func<int>(() => DateTime.UtcNow.Year - person.Age);
+
+//// Eklenen proplari elde etmek
+//IDictionary<string, object> dataDictionary = (IDictionary<string, object>)person;
+//foreach (KeyValuePair<string, object> item in dataDictionary)
+//{
+//    global::System.Console.WriteLine($"Key : {item.Key} - Value : {item.Value}");
+//}
+
+//// Dictionary uzerinden prop eklemek
+//dataDictionary.Add("Marr'ed", true);
+
+// Serialization & Deserialization islemleri.
+//using System.Dynamic;
+//using System.Text.Json;
+
+//dynamic person1 = new ExpandoObject();
+//person1.Name = "Gençay";
+//person1.Surname = "Yıldız";
+
+//dynamic person2 = new ExpandoObject();
+//person2.Name = "Suayip";
+//person2.Surname = "Uçarturnagurbetgezerogulları";
+
+//dynamic person3 = new ExpandoObject();
+//person3.Name = "Müslüm";
+//person3.Surname = "Yılmaz";
+
+//List<ExpandoObject> list = new()
+//{
+//    person1,
+//    person2,
+//    person3
+//};
+
+////Serializasyon
+//var jsonData = JsonSerializer.Serialize(list);
+//Console.WriteLine(jsonData);
+
+////Deserializasyon
+//dynamic data = JsonSerializer.Deserialize<List<ExpandoObject>>(jsonData);
+
+#endregion
+
