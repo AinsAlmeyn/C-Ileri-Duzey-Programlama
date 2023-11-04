@@ -1,5 +1,4 @@
 ﻿
-
 #region Deger tipli degiskenlerde ref keywordu calisiyor.
 //int b = 5;
 //x(ref b);
@@ -625,3 +624,31 @@
 
 #endregion
 
+#region Anonymus Kodlama
+
+#region Anonymus Object
+
+//var anonymus = new { name = "Anonim name", surname = "anonim surname" };
+//dynamic anonymus2 = new { name = "Anonim name", surname = "anonim surname" };
+
+#endregion
+
+#region Anonymus Function
+
+//var function = () => { }; // Fonksiyonun parametre ve geriye deger dondrume durumuna gore action / predict / func delegatelerinden birini kullanarak bu fonksiyonu var keywordune atayacaktir.
+
+#endregion
+
+#region Anonymus Collection
+//using Microsoft.VisualBasic;
+
+//var collection1 = new[] { 3, 5 };
+//var collection2 = new Collection()
+//{
+//    new { name = "ali" },
+//    new { name = "ahmet"}
+//};
+
+#endregion
+
+#endregion
