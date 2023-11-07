@@ -739,5 +739,30 @@
 //   -Coğrafi koordinatların saklanmasını sağlayan veri türüdür.
 #endregion
 
+#region Redis ile Caching
+
+#region In Memory
+
+//In-Memory Cache İşlem Sırası
+//1.AddMemoryCache servisini uygulamaya ekleyiniz.
+//2. IMemoryCache referansını inject ediniz.
+//3. Set metoduyla veriyi cache'leyebilir, Get metoduyla cache'lenmiş veriyi elde edebilirsiniz.
+//4. Remove fonksiyonuyla cache'lenmiş veriyi silebilirsiniz.
+//5. TryGetValue metod ile kontrolü bir şekilde cache'den veriyi okuyabilirsiniz.
+
+#endregion
+
+#region Distributed Caching
+
+// Kullanilacak kutuphane "Microsoft.Extensions.Caching.StackExchangeRedis"
+//1.StackExchangeRedis kütüphanesini uygulamaya yükleyiniz.
+//2. AddStackExchangeRedisCache servisini uygulamaya ekleyiniz.
+//3. IDistributedCache referansını inject ediniz.
+//4. SetString metodu ile metinsel, Set metodu ile ise binary olarak verilerinizi redis'e cache'leyebilirsiniz. Aynı şekilde GetString ve Get fonksiyonlarıyla cache'lenmiş verileri elde edebilirsiniz.
+//5. Remove fonksiyonu ile cache'lenmiş verileri silebilirsiniz.
+
+#endregion
+
+#endregion
 
 #endregion
