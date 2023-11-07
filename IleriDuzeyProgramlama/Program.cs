@@ -652,3 +652,92 @@
 #endregion
 
 #endregion
+
+#region Redis Notlari
+
+#region Data Turleri
+
+//1. * *String * *: 
+//   -Redis'in en temel, en basit veri türüdür.
+//   - Metinsel değerlerle birlikte her türlü veriyi saklamak için kullanılır.
+//   - Hatta binary olarak resim, dosya vs. veriler de saklayabilmektedir.
+//1. **SET**: 
+//   -İşlevi: Bir değeri bir anahtarla ilişkilendirerek ekler.
+//   - Örnek Kullanım: `SET NAME hilmi`
+//     - Bu komut, 'NAME' anahtarına 'hilmi' değerini atar.
+
+//2. **GET**: 
+//   -İşlevi: Belirtilen anahtarın değerini okur.
+//   - Örnek Kullanım: `GET NAME`
+//     - Bu komut, 'NAME' anahtarına atanmış olan değeri getirir.
+
+//3. **GETRANGE**: 
+//   -İşlevi: Anahtarın değerinde belirtilen karakter aralığını okur.
+//   - Örnek Kullanım: `GETRANGE NAME 1 2`
+//     - Bu komut, 'NAME' anahtarının değerindeki 1. ve 2. karakterler arasındaki bölümü döndürür.
+
+//4. **INCR & INCRBY**: 
+//   -İşlevi: Bir anahtarın sayısal değerini arttırma.
+//   - Örnek Kullanım: `INCR SAYI`
+//     - Bu komut, 'SAYI' anahtarının değerini bir arttırır.
+
+//5. **DECR & DECRBY**: 
+//   -İşlevi: Bir anahtarın sayısal değerini azaltma.
+
+//6. **APPEND**:
+//   -Islevi : Uzerine ekleme
+
+
+
+
+//2. **List**:
+//   -Değerleri koleksiyonel olarak tutan bir türdür.
+// - LPUSH bosa veri ekleme
+// - LRANGE veri listleme
+// - RPUSH sona veri ekleme
+// - LPOP ilk datayi cikarma.
+// - RPOP son datayi cikarma
+// - LINDEX indexe gore datayi getirme.
+
+
+
+//3. **Set**:
+//   -Verileri rastgele bir düzende unique bir biçimde tutan veri türüdür.
+// - SADD ekleme islemi yapar / SADD COLORS orange purple blue white
+// - SREM silme islemi yapar / SREM COLORS orange
+// - SISMEMBER arama islemi yapar / SISMEMBER COLORS purple
+// - SINTER iki setteki kesisimi getirir / SINTER user1:BOOKS user2:BOOKS
+// - SCARD eleman sayisini getirir / SCARD COLOR
+
+
+
+//4. **Sorted Set**:
+//   -Set'in düzenli bir şekilde tutan versiyonudur.
+// - ZADD ekleme / ZADD TEAMS 1 A   : 1 score degerine karsilik gelir sayisal olmalidir. score unique degildir ama kayitlar uniquedir
+// - ZRANGE getirme / ZRANGE TEAMS 0-1 YA DA ZRANGE TEAMS 0-1 WITHSCORES
+// ZREM silme / ZREM TEAMS A
+// ZREVRANK siralama ogrenme / ZREVRANK TEAMS B
+
+
+
+
+//5. * *Hash * *:
+//   -Key - Value formatında veri tutan türdür.
+// - HMSET & HSET ekleme / HMSET EMPLOYEES username gncy ya da HSET ile
+// - HMGET & HGET getirme / HMGET EMPLOYEES username
+// - HDEL silme / HDEL EMPLOYEES username
+// - HGETALL tumunu getirme / HGETALL EMPLOYEES
+
+
+
+
+//6. **Streams**:
+//   -Log gibi hareket eden bir veri türüdür.
+//   - Streams, event'lerin oluştuğu sırayla kaydedilmelerini ve daha sonra işlenmelerini sağlar.
+
+//7. **Geospatial Indexes**:
+//   -Coğrafi koordinatların saklanmasını sağlayan veri türüdür.
+#endregion
+
+
+#endregion
