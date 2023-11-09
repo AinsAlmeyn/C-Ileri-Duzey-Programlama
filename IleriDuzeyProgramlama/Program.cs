@@ -775,6 +775,16 @@
 //Docker uzerinde replication islemini nasil gerceklestirecegini RedisMasterSlave.png icerisinde ogrenebilirsin.
 
 #endregion
+
+#region Sentinel
+
+// Sentinel hizmetinin kullanilma amaclarina yonelik aciklamayi RedisSentinelPurpose.png uzerinden okuyabilirsiniz.
+// replication davranisi sentinel icerisinde dahili sekilde uygulanmaktadir.
+// Redis sentinel icin sentinellerin tanimlanmasi ve config dosyasinin olusturulmasi icin RedisSentinelCli.png'ye bakabilirsiniz.
+// Config dosyasinin satirlarinin islevlerinin aciklamasini RedisSentinelConfigInformation.png dosyasindan okuyabilirsiniz.
+
+#endregion
+
 #endregion
 
 #endregion
