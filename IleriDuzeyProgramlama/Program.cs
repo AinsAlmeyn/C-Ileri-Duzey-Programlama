@@ -763,6 +763,18 @@
 
 #endregion
 
+#region Replication
+
+//replication ana redis sunucusunun bir kopyasini olusturur. Ana sunucudaki redise master ona bagli olan replica'lara ise slave adi verilir. 
+//bu ikisi arasinda bir baglanti kurulur ve redis baglantinin kopmasi halinde surekli olarak bu baglantiyi saglamak icin istek yapar.
+//master ile replica arasinda bir fark olusmasi durumunda redis replica'yi master'a uygun olacak sekilde gunceller.
+//replication islemi cok fazla kaynak tuketmesine karsilik verilerin kaliciligini saglamak gibi onemli bir rol ustlenmektedir.
+//slveler master uzerinde bir degisiklik yapamazlar bu yuzden replicationun saglikli calisabilmesi icin degisiklikler master uzerinden yapilmalidir. Slaveler readonly yapilanmalardir.
+//okuma islemlerini master yerine slaveler uzerinden yapmak masterin yukunu azaltmak icin kullanilabilir.
+//slave sunucular canli veri uzerinde test yapmak istediginizde canli veriyi bozmadan test yapabilmenize olanak taniyacagi icin test sureclerinde ise yarayabilirler.
+//Docker uzerinde replication islemini nasil gerceklestirecegini RedisMasterSlave.png icerisinde ogrenebilirsin.
+
+#endregion
 #endregion
 
 #endregion
